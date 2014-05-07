@@ -1,0 +1,5 @@
+{{##def.content:
+<div><p><b>CONTENT</b></p></div>
+#}}
+
+{{#def.content}}
