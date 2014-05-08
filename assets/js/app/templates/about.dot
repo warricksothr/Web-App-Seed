@@ -1,0 +1,33 @@
+<div>
+	<center>
+		<h1>About {{=it.appName}}</h1>
+	</center>
+	<div class="container-fluid">
+			<div class="row">
+					<div class="col-md-4">
+						<h2>Used Technologies</h2>
+						{{~it.poweredBy :item:index}}
+						{{?item.url}}
+						<a href="{{=item.url}}" target="_blank">{{=item.name}}</a><br />
+						{{??}}
+						{{=item.name}}<br />
+						{{?}}
+						{{~}}
+					</div>
+					<div class="col-md-8">
+						<h2>App Information</h2>
+						<p>Some basic info about the application</p>
+					</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<center>
+						<p>This is another row</p>
+						<p>All of this is in a fluid contianer</p>
+						<p>It should resize to mobile screens flawlessly</p>
+						<p>This template file exists in assets/js/app/templates/about.dot<p>
+					</center>
+				</div>
+			</div>
+	</div>
+</div>

@@ -1,16 +1,19 @@
-define(["jquery", "bootstrap", "underscore", "backbone"], function () {
+define(["bootstrap", "underscore", "backbone", "app/routers/router", "jquery"], function (Bootstrap, _, Backbone, Workspace) {
 
+		//Initialize the application
     var init = function () {
-        //Draw the header on the page
-        require(["app/interface/draw_header"], function (func) {
-            func();
+				//Draw the Header and Footer
+        require(["app/interface"], function (iface) {
+            iface.drawHeader();
+						iface.drawFooter();
         });
+				// Initialize the main router
+				new Workspace();
+				// Enable history
+				Backbone.history.start();
+				// Route to the main page
+				// Happens by default
+    };
 
-        //Draw the footer on the page
-        require(["app/interface/draw_footer"], function (func) {
-            func();
-        });
-    }
-
-    return {"init": init}
+    return {"init": init};
 });

@@ -96,12 +96,10 @@ body {
 #push,
 #footer {
     min-height: 70px;
-    max-height: 70px;
 }
 
 #footer {
     min-height: 70px;
-    max-height: 70px;
     color: #EBEBEB;
     text-align: center;
     background-color: #555555;

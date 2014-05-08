@@ -1,3 +1,6 @@
+/*global require*/
+'use strict';
+
 //Require Configuration
 require.config({
     baseUrl: "assets/js",
@@ -12,6 +15,10 @@ require.config({
             deps: ["underscore", "jquery"],
             exports: "Backbone"
         },
+        backboneLocalstorage: {
+						deps: ['backbone'],
+						exports: 'Store'
+        },
         bootstrap: {
             deps: ["jquery"]
         }
@@ -20,6 +27,7 @@ require.config({
         // Library Specific Paths
         // First load from CDN if available, then fallback to local copies
         "backbone": ["//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min", "lib/backbonejs/backbone-min"], // Version: 1.1.2 From: http://backbonejs.org/
+				"backboneLocalStorage": ['lib/backbonejs-localStorage/backbone.localStorage.min'], //Version: 1.1.7 From: https://github.com/jeromegn/Backbone.localStorage
         "underscore": ["//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min", "lib/underscorejs/underscore-min"], // Version: 1.6.0 From: http://underscorejs.org/
         "jquery": ["//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min", "lib/jQuery/jQuery"], // Version: 2.1.1 From: http://jquery.com/
         "bootstrap": ["//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min", "lib/bootstrap/bootstrap.min"], // Version: 3.1.1 From: http://getbootstrap.com/
