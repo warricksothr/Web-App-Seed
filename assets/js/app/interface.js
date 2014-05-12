@@ -1,19 +1,17 @@
 define([
 	"doT!app/templates/header",
-	"text!app/app-data.json",
+	"json!app/data/app-data.json",
 	"doT!app/templates/footer",
-	"text!app/app-data.json", "jquery"
+	"json!app/data/app-data.json", "jquery"
 	], function(headerTmpl, headerData, footerTmpl, footerData) {
 	'use_strict'
 	
 	var drawHeader = function() {
-			var data = JSON.parse(headerData)
-			$("#header")[0].innerHTML = headerTmpl(data);
+			$("#header")[0].innerHTML = headerTmpl(headerData);
 	};
 	
 	var drawFooter = function() {
-			var data = JSON.parse(footerData)
-			$("#footer")[0].innerHTML = footerTmpl(data);
+			$("#footer")[0].innerHTML = footerTmpl(footerData);
 	};
 	
 	return {"drawHeader": drawHeader, "drawFooter": drawFooter};

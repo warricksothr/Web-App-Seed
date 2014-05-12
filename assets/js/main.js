@@ -32,8 +32,15 @@ require.config({
         "jquery": ["//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min", "lib/jQuery/jQuery"], // Version: 2.1.1 From: http://jquery.com/
         "bootstrap": ["//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min", "lib/bootstrap/bootstrap.min"], // Version: 3.1.1 From: http://getbootstrap.com/
         "doTCompiler": ["lib/doT/doT"], // Version: 1.0.0 From: http://olado.github.io/doT/index.html
-        "text": ["//cdnjs.cloudflare.com/ajax/libs/require-text/2.0.10/text", "lib/requirejs-text/text"], // Version: 2.0.10 From: https://github.com/requirejs/text
-        "doT": ["lib/requirejs-doT/doT"] // Version: 0.1.2. From: https://github.com/ullmark/requirejs-doT
+        "text": ["//cdnjs.cloudflare.com/ajax/libs/require-text/2.0.10/text", "lib/requirejs/text"], // Version: 2.0.10 From: https://github.com/requirejs/text
+        "doT": ["lib/requirejs/doT"], // Version: 0.1.2. From: https://github.com/ullmark/requirejs-doT
+				"propertyParser": ["lib/requirejs/propertyParser"], // Version: 0.1.0 From: https://github.com/millermedeiros/requirejs-plugins
+				"mdown": ["lib/requirejs/mdown"], // Version: 0.1.1 From: https://github.com/millermedeiros/requirejs-plugins
+				"markdownConverter": ["lib/markdown.converter/Markdown.Converter"], // Version: ? From: https://github.com/millermedeiros/requirejs-plugins
+				"noext": ["lib/requirejs/noext"], // Version: 0.3.1 From: https://github.com/millermedeiros/requirejs-plugins
+				"json": ["lib/requirejs/json"], // Version: 0.4.0 From: https://github.com/millermedeiros/requirejs-plugins
+				"image": ["lib/requirejs/image"], // Version: 0.2.2 From: https://github.com/millermedeiros/requirejs-plugins
+				"font": ["lib/requirejs/font"] // Version: 0.2.0 From: https://github.com/millermedeiros/requirejs-plugins
     },
     doT: {
         ext: '.dot', // extension of the templates, defaults to .dot

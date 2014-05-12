@@ -15,5 +15,6 @@ define(["jquery"], function ($) {
 					$(location).html(tmpl(data));
 				})
 			}
+			
 		}
 });
