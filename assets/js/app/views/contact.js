@@ -2,8 +2,8 @@
 define([
 	'jquery',
 	'backbone',
-	'doT!app/templates/contact'
-], function ($, Backbone, tmpl) {
+	'app/util'
+], function ($, Backbone, util) {
 		'use strict';
 
 	var ContactView = Backbone.View.extend({
@@ -15,7 +15,7 @@ define([
 		// Re-rendering the App just means refreshing the statistics -- the rest
 		// of the app doesn't change.
 		render: function () {
-			this.$el.html(tmpl());
+			util.renderTemplate("contact", {}, this.el)
 		}
 	})
 	

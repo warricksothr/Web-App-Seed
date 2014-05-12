@@ -2,9 +2,9 @@
 define([
 	'jquery',
 	'backbone',
-	'doT!app/templates/about',
+	'app/util',
 	'text!app/app-data.json'
-], function ($, Backbone, tmpl, appInfoText) {
+], function ($, Backbone, util, appInfoText) {
 		'use strict';
 
 	var AboutView = Backbone.View.extend({
@@ -17,7 +17,7 @@ define([
 		// of the app doesn't change.
 		render: function () {
 			var data = JSON.parse(appInfoText);
-			this.$el.html(tmpl(data));
+			util.renderTemplate("about", data, this.el)
 		}
 	})
 	
