@@ -1,12 +1,13 @@
 <div>
+	{{ it.util.saveCurrentDataToSession(it, "it"); out += it.util.domForExposingCurrentData("it"); }}
 	<center>
-		<h1>About {{=it.appName}}</h1>
+		<h1>About {{=it.data.appName}}</h1>
 	</center>
 	<div class="container-fluid">
 			<div class="row">
 					<div class="col-md-4">
 						<h2>Used Technologies</h2>
-						{{~it.poweredBy :item:index}}
+						{{~it.data.poweredBy :item:index}}
 						{{?item.url}}
 						<a href="{{=item.url}}" target="_blank">{{=item.name}}</a><br />
 						{{??}}
@@ -25,7 +26,9 @@
 						<p>This is another row</p>
 						<p>All of this is in a fluid contianer</p>
 						<p>It should resize to mobile screens flawlessly</p>
-						<p>This template file exists in assets/js/app/templates/about.dot<p>
+						<p>This template file exists in assets/js/app/templates/about.dot</p>
+						<p>{{ out += it.util.domForImage("logo.jpg", 100); }}</p>
+						<p><button onclick="closeWindow(this);"></button></p>
 					</center>
 				</div>
 			</div>
