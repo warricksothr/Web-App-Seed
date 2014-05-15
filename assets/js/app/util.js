@@ -2,7 +2,7 @@
 define(["jquery"], function ($) {
 
 		return {
-			// root location of the templates
+			// root locations
 			imageDir:	"assets/img/",
 			templateDir: "app/templates/",
 			markdownDir: "app/markdown/",
@@ -17,8 +17,10 @@ define(["jquery"], function ($) {
 			// Helper Functions 	 //
 			//--//--//-//--//--//--//
 			
-			// Prepare the data to be sent to the templates.
-			// includes this util as part of the package.
+			/**
+			 * Prepare the data to be sent to the templates.
+			 * includes this util as part of the package.
+			 */
 			packageData: function(payload) {
 				payload = typeof payload !== 'undefined' ? payload : {};
 				// never repackage if it has already been packaged
@@ -34,34 +36,78 @@ define(["jquery"], function ($) {
 				}
 			},
 			
-			// Stringify state and store it in localStorage
-			saveCurrentDataToSession: function (data, name) {
+			/**
+			 * Stringify data and store it in localSession under a specified name
+			 */
+			saveDataToSession: function (data, name) {
 				sessionStorage.setItem(name, JSON.stringify(data));
 			},
 			
-			// Load state from localStorage and restore functionality
+			/**
+			 * Load data from localSession and return it to the caller
+			 */
 			loadDataFromSession: function (name, additionalComponents) {
 				var storedData = JSON.parse(sessionStorage.getItem(name));
+				//Always reattach the util class for functionality
+				oldUtil = storedData.util
+				storedData.util = this;
+				//Import carryover values from the old util into the new util
+				storedData.util.seedUid = oldUtil.seedUid
+				return storedData;
+			},
+			
+			/**
+			 * Stringify data and store it in localSession under a specified name
+			 */
+			saveDataToLocalStorage: function (data, name) {
+				localStorage.setItem(name, JSON.stringify(data));
+			},
+			
+			/**
+			 * Load data from localSession and return it to the caller
+			 */
+			loadDataFromLocalStorage: function (name, additionalComponents) {
+				var storedData = JSON.parse(localStorage.getItem(name));
+				//Always reattach the util class for functionality
 				storedData.util = this;
 				return storedData;
+			},
+			
+			/**
+			 * Exports the given object into the global context.
+			 */
+			exportGlobal: function(name, object, overwrite) {
+				overwrite = typeof overwrite !== 'undefined' ? overwrite : false;
+				if (typeof(window) !== "undefined") {
+					// JS with GUI (usually browser)
+					if (typeof window[name] === 'undefined' || overwrite === true) {
+						window[name] = object;
+					}
+				}
+				else {
+						throw new Error("Unkown runtime environment. Currently only browsers are supported.");
+				}
 			},
 			
 			//--//--//--//--//--//
 			// Render Functions //
 			//--//--//--//--//--//
 			
-			// Get, compile and render a template to a specified element
-			// location of template, data to include, location to render to
+			/**
+			 * Get, compile and render a template to a specified element
+			 * location of template, data to include, location to render to
+			 */
 			renderTemplate: function (templateLocation, data, location) {
 				data = this.packageData(data);
 				location = typeof data !== 'undefined' ? location : $("#content")[0];
-				var template = "doT!" + this.templateDir + templateLocation
+				var template = "doT!" + this.templateDir + templateLocation.trim()
 				require([template], function(tmpl) {
 					$(location).html(tmpl(data));
 				})
 			},
-			
-			// Render a markdown file to a specified element
+			/**
+			 * Render a markdown file to a specified element
+			 */
 			renderMarkdown: function (markdownLocation, location) {
 				data = this.packageData();
 				location = typeof data !== 'undefined' ? location : $("#content")[0];
@@ -75,14 +121,23 @@ define(["jquery"], function ($) {
 			// DOM Generation Functions //
 			//--//--//--//--//--//--//--//
 			
-			//just expose the current 
-			domForExposingCurrentData: function (dataName) {
+			/**
+			 * dom for exposing the current data as a variable.
+			 * @param currentVarName: Name of the data varaiable in the template to expose to the browser
+			 * @param dataName: The name that the data is stored in session as.
+			 * @param varName: The name to use for the variable
+			 */
+			domForExposingCurrentData: function (dataName, varName, overwrite) {
+				overwrite = typeof overwrite !== 'undefined' ? overwrite : false;
+				varName = typeof varName !== 'undefined' ? varName : "it";
 				dataName = typeof dataName !== 'undefined' ? dataName : "it";
-				script = $('<script>var '+dataName+' = {}; require(["app/util"], function(util) { '+dataName+' = util.loadDataFromSession("'+dataName+'"); });</script>');
+				script = $('<script>require(["app/util"], function(util) { util.exportGlobal("'+varName+'",util.loadDataFromSession("'+dataName+'"),'+overwrite+'); });</script>');
 				return $(script)[0].outerHTML;
 			},
 			
-			// Generate a lazy loading for the image
+			/**
+			 * Generate a lazy loading element and script for an image
+			 */
 			domForImage: function (imageLocation, width, height, uid) {
 				uid = typeof uid !== 'undefined' ? uid : this.getNextUid();
 				var image = "image!" + this.imageDir + imageLocation;
@@ -100,17 +155,25 @@ define(["jquery"], function ($) {
 				return $(domWrapper)[0].outerHTML;
 			},
 			
-			// Generate a button that dynamically changes the content
-			// to the requested template
-			domForTemplateButton: function (templateLocation, data, buttonText, cssClass, renderLocation, uid) {
+			/**
+			 * Generate a button that dynamically changes the content
+			 * to the requested template
+			 * @param templateLocation: the location of the template under the template directory
+			 * @param data: the data to include in the rendering of the template
+			 * @param buttonText: The text that is written on the button for the user
+			 * @param cssClass: a specific style to apply to the button. Any valid CSS will work. (Optional)
+			 * @param renderLocation: The search descriptor or jQuery element where this template should be rendered. (Optional)
+			 * @param uid: a special identifier to help differentiate this item. (Optional)
+			 */
+			domForTemplateButton: function (templateLocation, dataName, buttonText, cssClass, renderLocation, uid) {
 				buttonText = typeof buttonText !== 'undefined' ? buttonText : templateLocation;
 				cssClass = typeof cssClass !== 'undefined' ? cssClass : "button";
-				renderLocation = typeof renderLocation !== 'undefined' ? renderLocation : $("#content")[0]
+				renderLocation = typeof renderLocation !== 'undefined' ? renderLocation : "#content"
 				uid = typeof uid !== 'undefined' ? uid : this.getNextUid();
-				var id = "tmpl-" + imageLocation.split('/').join('-').split('.')[0] + "-" + uid;
+				var id = "tmpl-" + templateLocation.split('/').join('-').split('.')[0] + "-" + uid;
 				var domWrapper = $('<div id="'+id+'"></div>');
 				
-				$(domWrapper).append('<button class="'+cssClass+'">'+buttonText+'</button>')
+				$(domWrapper).append('<button class="'+cssClass+'" onclick="'+dataName+'.util.renderTemplate(\''+templateLocation+'\','+dataName+',\''+renderLocation+'\');">'+buttonText+'</button>')
 				
 				return $(domWrapper)[0].outerHTML;
 			}

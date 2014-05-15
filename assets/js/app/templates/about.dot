@@ -1,5 +1,4 @@
 <div>
-	{{ it.util.saveCurrentDataToSession(it, "it"); out += it.util.domForExposingCurrentData("it"); }}
 	<center>
 		<h1>About {{=it.data.appName}}</h1>
 	</center>
@@ -28,9 +27,10 @@
 						<p>It should resize to mobile screens flawlessly</p>
 						<p>This template file exists in assets/js/app/templates/about.dot</p>
 						<p>{{ out += it.util.domForImage("logo.jpg", 100); }}</p>
-						<p><button onclick="closeWindow(this);"></button></p>
+						<p>{{ out += it.util.domForTemplateButton("home","it","Go Home"); }}</p>
 					</center>
 				</div>
 			</div>
 	</div>
+	{{ it.util.saveDataToSession(it, "it"); out += it.util.domForExposingCurrentData("it","it"); }}
 </div>
