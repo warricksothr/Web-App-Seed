@@ -16,6 +16,22 @@ The main backbone router that is started with the app is defined at assets/js/ap
 
 Templates are stored in assets/js/app/templates. They are defined for use with the doT.js templating library that exposes the entirety of javascript to the templating engine. This allows templates to access and change functionality dynamically.  
 
+Development
+-----------
+
+### Setup Environment:
+
+#### Build Requirements:
+- Node.js
+- npm
+- Bower (npm install -g bower)
+- Mimosa (npm install -g mimosa)
+
+When the above are successfully installed, run "mimosa build" or "mimosa build --minify" from the root directory of the project. Mimosa will then download the dependencies with bower, copy them over into the src directory as the latest versions., finally a "public" folder will be created with the results of the build. This can be used to deply the application.
+
+#### Test Requirements:
+- phantomjs (npm install -g phantomjs)
+
 Credits
 -------
 

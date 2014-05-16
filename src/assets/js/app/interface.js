@@ -1,17 +1,15 @@
 define([
-	"doT!app/templates/header",
+	"app/util",
 	"json!app/data/app-data.json",
-	"doT!app/templates/footer",
-	"json!app/data/app-data.json", "jquery"
-	], function(headerTmpl, headerData, footerTmpl, footerData) {
+	], function(util, data) {
 	"use_strict";
 	
 	var drawHeader = function() {
-			$("#header")[0].innerHTML = headerTmpl(headerData);
+		util.renderTemplate("header", data, $("#header")[0]);
 	};
 	
 	var drawFooter = function() {
-			$("#footer")[0].innerHTML = footerTmpl(footerData);
+		util.renderTemplate("footer", data, $("#footer")[0]);
 	};
 	
 	return {"drawHeader": drawHeader, "drawFooter": drawFooter};

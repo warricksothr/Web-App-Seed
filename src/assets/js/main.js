@@ -1,6 +1,3 @@
-/*global require*/
-'use strict';
-
 //Require Configuration
 require.config({
     baseUrl: "assets/js",

@@ -32,6 +32,7 @@ exports.config = {
 		"minify-js",
 		"minify-css",
 		"live-reload",
-		"bower"
+		"bower",
+		"testem-require"
 	]
 }
