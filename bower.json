@@ -19,16 +19,19 @@
     "tests"
   ],
   "dependencies": {
-	"jquery": "2.1.1",
-	"backbone":"1.1.2",
-    "backbone.localStorage":"1.1.7",
-	"underscore":"1.6.0",
-	"bootstrap":"3.1.1",
-	"doT":"1.0.1",
-	"requirejs":"2.1.11",
-	"requirejs-text":"2.0.12",
-	"requirejs-plugins":"1.0.2",
-	"requirejs-doT":"0.1.2",
-    "modernizr":"2.8.1"
+    "jquery": "2.1.*",
+    "backbone": "1.1.*",
+    "backbone.localStorage": "1.1.*",
+    "underscore": "1.6.*",
+    "bootstrap": "3.1.*",
+    "doT": "1.0.*",
+    "requirejs": "2.1.*",
+    "requirejs-text": "2.0.*",
+    "requirejs-plugins": "1.0.*",
+    "requirejs-doT": "0.1.*",
+    "modernizr": "2.8.*"
+  },
+  "resolutions": {
+    "doT": "1.0.*"
   }
 }
