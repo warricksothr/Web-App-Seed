@@ -4,11 +4,14 @@ exports.config = {
 		compiledDir: "public",
 		javascriptDir: "assets/js"
 	},
+	vendor: {
+		javascripts: "assets/js/lib",
+		stylesheets: "assets/css/lib"
+	},
 	"modules": [
 		"copy",
 		"jshint",
 		"csslint",
-		"server",
 		"require",
 		"minify-js",
 		"minify-css",
