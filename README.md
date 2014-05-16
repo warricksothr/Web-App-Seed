@@ -26,6 +26,7 @@ Development
 - npm
 - Bower (npm install -g bower)
 - Mimosa (npm install -g mimosa)
+- Compass (Ruby is required. gem install compass)
 
 When the above are successfully installed, run "mimosa build" or "mimosa build --minify" from the root directory of the project. Mimosa will then download the dependencies with bower, copy them over into the src directory as the latest versions., finally a "public" folder will be created with the results of the build. This can be used to deply the application.
 

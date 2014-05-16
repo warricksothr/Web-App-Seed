@@ -1,10 +1,9 @@
 define([
-	'jquery',
 	'backbone',
 	'app/views/home',
 	'app/views/about',
 	'app/views/contact'
-], function ($, Backbone, HomeView, AboutView, ContactView) {
+], function (Backbone, HomeView, AboutView, ContactView) {
 	'use strict';
 
 	return Backbone.Router.extend({

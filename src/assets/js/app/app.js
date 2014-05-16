@@ -1,4 +1,4 @@
-define(["underscore", "backbone", "app/routers/router", "jquery", "bootstrap"], function (_, Backbone, Workspace) {
+define(["backbone", "app/routers/router", "jquery", "bootstrap"], function (Backbone, Workspace) {
 
 		//Initialize the application
     var init = function () {

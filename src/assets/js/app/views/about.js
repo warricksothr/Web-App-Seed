@@ -1,10 +1,9 @@
 /*global define*/
 define([
-	'jquery',
 	'backbone',
 	'app/util',
 	'json!app/data/app-data.json'],
-	function ($, Backbone, util, appInfo) {
+	function (Backbone, util, appInfo) {
 	"use strict";
 
 	var AboutView = Backbone.View.extend({
