@@ -25,24 +25,24 @@ require.config({
     },
     paths: {
         // Library Specific Paths
-        "backbone": ["lib/backbone/backbone"],
-		"backboneLocalStorage": ['lib/backbone.localStorage/backbone.localStorage'],
-        "underscore": ["lib/underscore/underscore"],
-        "jquery": ["lib/jquery/jquery"],
-        "bootstrap": ["lib/bootstrap/bootstrap"],
-        "doTCompiler": ["lib/doT/doT"],
-        "text": ["lib/requirejs-text/text"],
-        "doT": ["lib/requirejs-doT/doT"],
-		"propertyParser": ["lib/requirejs-plugins/propertyParser"],
-		"mdown": ["lib/requirejs-plugins/mdown"],
-		"markdownConverter": ["lib/requirejs-plugins/Markdown.Converter"],
-		"noext": ["lib/requirejs-plugins/noext"],
-		"json": ["lib/requirejs-plugins/json"],
-		"image": ["lib/requirejs-plugins/image"],
-		"font": ["lib/requirejs-plugins/font"]
+        "backbone": "lib/backbone/backbone",
+		"backboneLocalStorage": 'lib/backbone.localStorage/backbone.localStorage',
+        "underscore": "lib/underscore/underscore",
+        "jquery": "lib/jquery/jquery",
+        "bootstrap": "lib/bootstrap/bootstrap",
+        "doTCompiler": "lib/doT/doT",
+        "text": "lib/requirejs-text/text",
+        "doT": "lib/requirejs-doT/doT",
+		"propertyParser": "lib/requirejs-plugins/propertyParser",
+		"mdown": "lib/requirejs-plugins/mdown",
+		"markdownConverter": "lib/requirejs-plugins/Markdown.Converter",
+		"noext": "lib/requirejs-plugins/noext",
+		"json": "lib/requirejs-plugins/json",
+		"image": "lib/requirejs-plugins/image",
+		"font": "lib/requirejs-plugins/font"
     },
     doT: {
-        ext: '.dot', // extension of the templates, defaults to .dot
+        ext: '.html', // extension of the templates, defaults to .dot
         templateSettings: {
             evaluate: /\{\{([\s\S]+?)\}\}/g,
             interpolate: /\{\{=([\s\S]+?)\}\}/g,

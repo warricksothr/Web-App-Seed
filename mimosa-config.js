@@ -17,6 +17,13 @@ exports.config = {
 			}
 		}
 	},
+	require: {
+		optimize: {
+			overrides: {
+				mainConfigFile: "src/assets/js/main.js"
+			}
+		}
+	},
 	"modules": [
 		"copy",
 		"jshint",
