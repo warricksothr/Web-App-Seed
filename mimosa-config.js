@@ -8,6 +8,9 @@ exports.config = {
 		javascripts: "assets/js/lib",
 		stylesheets: "assets/css/lib"
 	},
+	copy: {
+		//exclude: [/\/?(.)+-test.js/]
+	},
 	bower: {
 		copy: {
 			unknownMainFullCopy: false,
@@ -33,6 +36,10 @@ exports.config = {
 		"minify-css",
 		"live-reload",
 		"bower",
-		"testem-require"
+		"testem-qunit",
+		"require-lint",
+		"plato",
+		"js-validate",
+		"dependency-graph"
 	]
 }

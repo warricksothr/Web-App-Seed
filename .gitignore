@@ -9,3 +9,5 @@ bower_components
 
 public
 /node_modules
+/test.bat
+/test.sh
