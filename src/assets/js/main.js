@@ -15,9 +15,9 @@ require.config({
             deps: ["underscore", "jquery"],
             exports: "Backbone"
         },
-        backboneLocalstorage: {
-						deps: ['backbone'],
-						exports: 'Store'
+        backboneLocalStorage: {
+			deps: ['backbone'],
+			exports: 'Store'
         },
         bootstrap: {
             deps: ["jquery"]
@@ -31,15 +31,15 @@ require.config({
         "jquery": ["lib/jquery/jquery"],
         "bootstrap": ["lib/bootstrap/bootstrap"],
         "doTCompiler": ["lib/doT/doT"],
-        "text": ["lib/requirejs/text"],
-        "doT": ["lib/requirejs/doT"],
-		"propertyParser": ["lib/requirejs/propertyParser"],
-		"mdown": ["lib/requirejs/mdown"],
-		"markdownConverter": ["lib/markdown.converter/Markdown.Converter"],
-		"noext": ["lib/requirejs/noext"],
-		"json": ["lib/requirejs/json"],
-		"image": ["lib/requirejs/image"],
-		"font": ["lib/requirejs/font"]
+        "text": ["lib/requirejs-text/text"],
+        "doT": ["lib/requirejs-doT/doT"],
+		"propertyParser": ["lib/requirejs-plugins/propertyParser"],
+		"mdown": ["lib/requirejs-plugins/mdown"],
+		"markdownConverter": ["lib/requirejs-plugins/Markdown.Converter"],
+		"noext": ["lib/requirejs-plugins/noext"],
+		"json": ["lib/requirejs-plugins/json"],
+		"image": ["lib/requirejs-plugins/image"],
+		"font": ["lib/requirejs-plugins/font"]
     },
     doT: {
         ext: '.dot', // extension of the templates, defaults to .dot
