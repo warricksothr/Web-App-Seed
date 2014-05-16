@@ -3,29 +3,27 @@ define([
 	'backbone',
 	'app/views/home',
 	'app/views/about',
-	'app/views/contact',
-], function ($, Backbone, homeView, aboutView, contactView) {
+	'app/views/contact'
+], function ($, Backbone, HomeView, AboutView, ContactView) {
 	'use strict';
 
-	var MainRouter = Backbone.Router.extend({
+	return Backbone.Router.extend({
 		routes: {
-			'': 				'home',			// #
-			'about': 		'about',		// #about
-			'contact':	'contact'		// #contact
+			'':'home',// #
+			'about':'about',// #about
+			'contact':'contact'// #contact
 		},
 
 		home: function() {
-			new homeView().render();
+			new HomeView().render();
 		},
 		
 		about: function() {
-			new aboutView().render();
+			new AboutView().render();
 		},
 		
 		contact: function() {
-			new contactView().render();
+			new ContactView().render();
 		}
 	});
-
-	return MainRouter;
 });

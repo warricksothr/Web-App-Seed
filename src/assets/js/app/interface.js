@@ -4,7 +4,7 @@ define([
 	"doT!app/templates/footer",
 	"json!app/data/app-data.json", "jquery"
 	], function(headerTmpl, headerData, footerTmpl, footerData) {
-	'use_strict'
+	"use_strict";
 	
 	var drawHeader = function() {
 			$("#header")[0].innerHTML = headerTmpl(headerData);

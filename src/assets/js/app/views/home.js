@@ -4,7 +4,7 @@ define([
 	'backbone',
 	'app/util'
 ], function ($, Backbone, util) {
-		'use strict';
+	"use strict";
 
 	var HomeView = Backbone.View.extend({
 
@@ -15,9 +15,9 @@ define([
 		// Re-rendering the App just means refreshing the statistics -- the rest
 		// of the app doesn't change.
 		render: function () {
-			util.renderTemplate("home", {}, this.el)
+			util.renderTemplate("home", {}, this.el);
 		}
-	})
+	});
 	
 	return HomeView;
 });

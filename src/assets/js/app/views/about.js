@@ -5,7 +5,7 @@ define([
 	'app/util',
 	'json!app/data/app-data.json'],
 	function ($, Backbone, util, appInfo) {
-		'use strict';
+	"use strict";
 
 	var AboutView = Backbone.View.extend({
 
@@ -16,9 +16,9 @@ define([
 		// Re-rendering the App just means refreshing the statistics -- the rest
 		// of the app doesn't change.
 		render: function () {
-			util.renderTemplate("about", appInfo, this.el)
+			util.renderTemplate("about", appInfo, this.el);
 		}
-	})
+	});
 	
 	return AboutView;
 });

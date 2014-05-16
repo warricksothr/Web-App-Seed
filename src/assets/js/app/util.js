@@ -10,11 +10,11 @@ define(["jquery"], function ($) {
 			// presets
 			seedUid: Math.floor(Math.random()*100001),
 			getNextUid: function() {
-				return this.seedUid += 1
+				return this.seedUid += 1;
 			},
 			
 			//--//--//-//--//--//--//
-			// Helper Functions 	 //
+			// Helper Functions    //
 			//--//--//-//--//--//--//
 			
 			/**
@@ -26,13 +26,13 @@ define(["jquery"], function ($) {
 				// never repackage if it has already been packaged
 				// this is to handle being passed around within templates
 				if (typeof payload.packaged !== 'undefined' && typeof payload.data !== 'undefined' && typeof payload.util !== 'undefined') {
-					return payload
+					return payload;
 				} else {
 					return {
 						packaged: true,
 						data: payload,
 						util: this
-					}
+					};
 				}
 			},
 			
@@ -49,10 +49,10 @@ define(["jquery"], function ($) {
 			loadDataFromSession: function (name, additionalComponents) {
 				var storedData = JSON.parse(sessionStorage.getItem(name));
 				//Always reattach the util class for functionality
-				oldUtil = storedData.util
+				var oldUtil = storedData.util;
 				storedData.util = this;
 				//Import carryover values from the old util into the new util
-				storedData.util.seedUid = oldUtil.seedUid
+				storedData.util.seedUid = oldUtil.seedUid;
 				return storedData;
 			},
 			
@@ -100,21 +100,21 @@ define(["jquery"], function ($) {
 			renderTemplate: function (templateLocation, data, location) {
 				data = this.packageData(data);
 				location = typeof data !== 'undefined' ? location : $("#content")[0];
-				var template = "doT!" + this.templateDir + templateLocation.trim()
+				var template = "doT!" + this.templateDir + templateLocation.trim();
 				require([template], function(tmpl) {
 					$(location).html(tmpl(data));
-				})
+				});
 			},
 			/**
 			 * Render a markdown file to a specified element
 			 */
 			renderMarkdown: function (markdownLocation, location) {
-				data = this.packageData();
+				var data = this.packageData();
 				location = typeof data !== 'undefined' ? location : $("#content")[0];
-				var markdown = "mdown!" + this.markdownDir + markdownLocation
+				var markdown = "mdown!" + this.markdownDir + markdownLocation;
 				require([markdown], function(md) {
 					$(location).html(md);
-				})
+				});
 			},
 			
 			//--//--//--//--//--//--//--//
@@ -123,15 +123,15 @@ define(["jquery"], function ($) {
 			
 			/**
 			 * dom for exposing the current data as a variable.
-			 * @param currentVarName: Name of the data varaiable in the template to expose to the browser
-			 * @param dataName: The name that the data is stored in session as.
-			 * @param varName: The name to use for the variable
+			 * @param dataName Name of the data varaiable in the template to expose to the browser
+			 * @param varName The name that the data is stored in session as.
+			 * @param overwrite The name to use for the variable
 			 */
 			domForExposingCurrentData: function (dataName, varName, overwrite) {
 				overwrite = typeof overwrite !== 'undefined' ? overwrite : false;
 				varName = typeof varName !== 'undefined' ? varName : "it";
 				dataName = typeof dataName !== 'undefined' ? dataName : "it";
-				script = $('<script>require(["app/util"], function(util) { util.exportGlobal("'+varName+'",util.loadDataFromSession("'+dataName+'"),'+overwrite+'); });</script>');
+				var script = $('<script>require(["app/util"], function(util) { util.exportGlobal("'+varName+'",util.loadDataFromSession("'+dataName+'"),'+overwrite+'); });</script>');
 				return $(script)[0].outerHTML;
 			},
 			
@@ -146,9 +146,9 @@ define(["jquery"], function ($) {
 				
 				// Handle custom width requirents for the loaded image
 				var customWidthScript = "";
-				if (typeof width !== 'undefined') { customWidthScript = "$(image).width("+width+");" }
+				if (typeof width !== 'undefined') { customWidthScript = "$(image).width("+width+");"; }
 				var customHeightScript = "";
-				if (typeof height !== 'undefined') { customHeightScript = "$(image).height("+height+");" }
+				if (typeof height !== 'undefined') { customHeightScript = "$(image).height("+height+");"; }
 				
 				var script = $('<script>require(["'+image+'","jquery"], function(image, $) {$("#'+id+'").each( function() {'+customWidthScript+customHeightScript+' $(this).append(image); })});</script>');
 				domWrapper.append(script);
@@ -158,24 +158,24 @@ define(["jquery"], function ($) {
 			/**
 			 * Generate a button that dynamically changes the content
 			 * to the requested template
-			 * @param templateLocation: the location of the template under the template directory
-			 * @param data: the data to include in the rendering of the template
-			 * @param buttonText: The text that is written on the button for the user
-			 * @param cssClass: a specific style to apply to the button. Any valid CSS will work. (Optional)
-			 * @param renderLocation: The search descriptor or jQuery element where this template should be rendered. (Optional)
-			 * @param uid: a special identifier to help differentiate this item. (Optional)
+			 * @param templateLocation the location of the template under the template directory
+			 * @param dataName the data to include in the rendering of the template
+			 * @param buttonText The text that is written on the button for the user
+			 * @param cssClass a specific style to apply to the button. Any valid CSS will work. (Optional)
+			 * @param renderLocation The search descriptor or jQuery element where this template should be rendered. (Optional)
+			 * @param uid a special identifier to help differentiate this item. (Optional)
 			 */
 			domForTemplateButton: function (templateLocation, dataName, buttonText, cssClass, renderLocation, uid) {
 				buttonText = typeof buttonText !== 'undefined' ? buttonText : templateLocation;
 				cssClass = typeof cssClass !== 'undefined' ? cssClass : "button";
-				renderLocation = typeof renderLocation !== 'undefined' ? renderLocation : "#content"
+				renderLocation = typeof renderLocation !== 'undefined' ? renderLocation : "#content";
 				uid = typeof uid !== 'undefined' ? uid : this.getNextUid();
 				var id = "tmpl-" + templateLocation.split('/').join('-').split('.')[0] + "-" + uid;
 				var domWrapper = $('<div id="'+id+'"></div>');
 				
-				$(domWrapper).append('<button class="'+cssClass+'" onclick="'+dataName+'.util.renderTemplate(\''+templateLocation+'\','+dataName+',\''+renderLocation+'\');">'+buttonText+'</button>')
+				$(domWrapper).append('<button class="'+cssClass+'" onclick="'+dataName+'.util.renderTemplate(\''+templateLocation+'\','+dataName+',\''+renderLocation+'\');">'+buttonText+'</button>');
 				
 				return $(domWrapper)[0].outerHTML;
 			}
-		}
+		};
 });
