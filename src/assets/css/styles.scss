@@ -1,5 +1,6 @@
 @import "compass";
 
+/* Variables */
 
 /* Custom Font Sizes */
 .big {
@@ -21,9 +22,23 @@
 /* Customize Navbar */
 
 .navbar-inner {
-    background-color: #484848;
+    /*background-color: #484848;*/
     @include background-image(linear-gradient(top, #414141, #4F4F4F 40%, #484848));
     background-repeat: repeat-x;
+}
+
+/* Brand in the navbar */
+.navbar-inverse {
+	.navbar-brand {
+		color: #B0B0B0;
+	}
+}
+
+/* Links in the navbar */
+.navbar-inverse { 
+	.navbar-nav > li > a {
+		color: #B0B0B0
+	}
 }
 
 /* Custom Color */
@@ -33,11 +48,11 @@ body {
     padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
 }
 
-#wrap > .navbar {
+.wrap > .navbar {
     font-size: 13px;
 }
 
-#wrap > .navbar .brand {
+.wrap > .navbar .brand {
     padding-right: 0;
     padding-left: 0;
     margin-left: 20px;
@@ -51,13 +66,11 @@ body {
     transition: all .2s linear;
 }
 
-/*
-#wrap > .navbar .brand:hover {
+.wrap > .navbar .brand:hover {
     color: #ffffff;
     text-decoration: none;
     text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.4);
 }
-*/
 
 html,
 body {
@@ -68,7 +81,7 @@ body {
 /* Sticky Footer Styling */
 
 /* Wrapper for page content to push down footer */
-#wrap {
+.wrap {
     min-height: 100%;
     height: auto !important;
     height: 100%;
@@ -77,12 +90,12 @@ body {
 }
 
 /* Set the fixed height of the footer here */
-#push,
-#footer {
+.push,
+.footer {
     min-height: 70px;
 }
 
-#footer {
+.footer {
     min-height: 70px;
     color: #EBEBEB;
     text-align: center;
@@ -93,7 +106,7 @@ body {
 
 /* Lastly, apply responsive CSS fixes as necessary */
 @media (max-width: 767px) {
-    #footer {
+    .footer {
         margin-left: -20px;
         margin-right: -20px;
         padding-left: 20px;
@@ -103,7 +116,7 @@ body {
 
 /* Header Styles */
 
-#logo {
+.logo {
     float: left;
     margin-right: 5px;
     height: 40px;
