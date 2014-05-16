@@ -1,0 +1,1 @@
+define(["backbone","app/views/home","app/views/about","app/views/contact"],function(t,e,n,r){"use strict";return t.Router.extend({routes:{"":"home",about:"about",contact:"contact"},home:function(){(new e).render()},about:function(){(new n).render()},contact:function(){(new r).render()}})});

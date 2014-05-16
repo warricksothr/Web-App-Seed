@@ -1,0 +1,1 @@
+define(["backbone","app/util"],function(t,e){"use strict";var n=t.View.extend({el:"#content",render:function(){e.renderTemplate("contact",{},this.el)}});return n});

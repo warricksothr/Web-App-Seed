@@ -1,0 +1,1 @@
+define(["backbone","app/routers/router","jquery","bootstrap"],function(e,t){var n=function(){require(["app/interface"],function(e){e.drawHeader(),e.drawFooter()}),new t,e.history.start()};return{init:n}});

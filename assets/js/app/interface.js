@@ -1,0 +1,1 @@
+define(["app/util","json!app/data/app-data.json"],function(e,r){"use_strict";var o=function(){e.renderTemplate("header",r,$("#header")[0])},s=function(){e.renderTemplate("footer",r,$("#footer")[0])};return{drawHeader:o,drawFooter:s}});

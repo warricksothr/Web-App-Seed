@@ -1,0 +1,1 @@
+define(["backbone","app/util","json!app/data/app-data.json"],function(t,e,n){"use strict";var i=t.View.extend({el:"#content",render:function(){e.renderTemplate("about",n,this.el)}});return i});
