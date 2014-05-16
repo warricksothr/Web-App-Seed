@@ -12,7 +12,8 @@ exports.config = {
 		copy: {
 			unknownMainFullCopy: false,
 			mainOverrides: {
-				"doT": ["doT.js"]
+				"doT": ["doT.js"],
+				"modernizr": ["modernizr.js"]
 			}
 		}
 	},
