@@ -8,6 +8,14 @@ exports.config = {
 		javascripts: "assets/js/lib",
 		stylesheets: "assets/css/lib"
 	},
+	bower: {
+		copy: {
+			unknownMainFullCopy: false,
+			mainOverrides: {
+				"doT": ["doT.js"]
+			}
+		}
+	},
 	"modules": [
 		"copy",
 		"jshint",
